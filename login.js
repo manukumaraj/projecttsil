@@ -56,8 +56,10 @@ function checkLogin() {
 }
 
 // Run checkLogin on restricted pages (excluding index.html)
+// Run checkLogin only on non-login pages
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname !== '/index.html') {
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage !== 'index.html' && currentPage !== '') {
         checkLogin();
     }
 });
